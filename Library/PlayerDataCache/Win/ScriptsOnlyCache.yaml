@@ -106,19 +106,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12552}
     - Class: 114
-      Script: {instanceID: 13004}
+      Script: {instanceID: 13006}
     - Class: 114
-      Script: {instanceID: 13270}
+      Script: {instanceID: 13272}
     - Class: 114
-      Script: {instanceID: 13288}
+      Script: {instanceID: 13292}
     - Class: 114
-      Script: {instanceID: 13580}
+      Script: {instanceID: 13584}
     - Class: 114
-      Script: {instanceID: 13776}
+      Script: {instanceID: 13780}
     - Class: 114
-      Script: {instanceID: 13890}
+      Script: {instanceID: 13894}
     - Class: 114
-      Script: {instanceID: 14002}
+      Script: {instanceID: 14006}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -185,27 +185,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12514}
     - Class: 114
-      Script: {instanceID: 12824}
+      Script: {instanceID: 12822}
     - Class: 114
-      Script: {instanceID: 12940}
+      Script: {instanceID: 12826}
     - Class: 114
-      Script: {instanceID: 13004}
+      Script: {instanceID: 12942}
     - Class: 114
-      Script: {instanceID: 13124}
+      Script: {instanceID: 13006}
     - Class: 114
-      Script: {instanceID: 13206}
+      Script: {instanceID: 13126}
     - Class: 114
-      Script: {instanceID: 13406}
+      Script: {instanceID: 13208}
     - Class: 114
-      Script: {instanceID: 13580}
+      Script: {instanceID: 13286}
     - Class: 114
-      Script: {instanceID: 13928}
+      Script: {instanceID: 13410}
     - Class: 114
-      Script: {instanceID: 14002}
+      Script: {instanceID: 13584}
     - Class: 114
-      Script: {instanceID: 63940}
+      Script: {instanceID: 13932}
     - Class: 114
-      Script: {instanceID: 63948}
+      Script: {instanceID: 14006}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -509,6 +509,12 @@ ScriptsOnlyBuild:
     className: CameraController
   - hash:
       serializedVersion: 2
+      Hash: ad636502c9e049a81549a8b19c75f161
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LeftEdge
+  - hash:
+      serializedVersion: 2
       Hash: c8c5e65e9fb858572516474d6e2102bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -621,6 +627,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: b4a1edecd9d020488ff1c5730e83a48c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RightEdge
   - hash:
       serializedVersion: 2
       Hash: fe1fdeffc2067077b2f1a90b210c2532
@@ -921,21 +933,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: ad636502c9e049a81549a8b19c75f161
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LeftEdge
-  - hash:
-      serializedVersion: 2
-      Hash: b4a1edecd9d020488ff1c5730e83a48c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RightEdge
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/PlayScene.unity
   - Assets/Scenes/Game Over.unity
-  playerPath: H:/School work/Unity/Qbert2021/Q-Bert.exe
+  playerPath: H:/School work/Unity/QbertBuild/Q-Bert.exe

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 52c331f7dd958594787e4f6bb3c0c57c, type: 3}
+  m_Sprite: {fileID: -4058236824896125079, guid: 4b9d1272e978aa149b9200ca8414ef72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,9 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca198c927461824db56f983f0925ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coilyObj: {fileID: 6077659627036001203}
-  qBertObj: {fileID: 0}
+  TargetObj: {fileID: 0}
   coilyPos: {x: 0, y: 0, z: 0}
-  qBertPos: {x: 0, y: 0, z: 0}
+  TargetPos: {x: 0, y: 0, z: 0}
   spriteRenderer: {fileID: 8495167979487922192}
-  newSprite: {fileID: 21300000, guid: 66854e7b65a8a2541ad797aeb5733d7a, type: 3}
+  newSprite: {fileID: 1367890667029729456, guid: 4b9d1272e978aa149b9200ca8414ef72, type: 3}
