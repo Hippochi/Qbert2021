@@ -71,7 +71,7 @@ public class PlayerMove : MonoBehaviour
         {
             PlayState.death = true;
             PlayState.qbertLives -= 1;
-            GetComponent<Transform>().position = new Vector3(0, 1, 0);
+            GetComponent<Transform>().position += new Vector3(0, 1, 0);
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             StartCoroutine(deathTimer());
             //kills qbert and resets his position
@@ -81,7 +81,7 @@ public class PlayerMove : MonoBehaviour
         {
             PlayState.death = true;
             PlayState.qbertLives -= 1;
-            GetComponent<Transform>().position = new Vector3(0, 1, 0);
+            GetComponent<Transform>().position += new Vector3(0, 1, 0);
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             StartCoroutine(deathTimer());
             //kills qbert and resets his position

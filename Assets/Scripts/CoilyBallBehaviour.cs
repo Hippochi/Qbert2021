@@ -27,7 +27,6 @@ public class CoilyBallBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
        
- 
 
         if (isTracking == false)
         {
@@ -59,6 +58,9 @@ public class CoilyBallBehaviour : MonoBehaviour
                     isTracking = false;
                     Destroy(gameObject);
                 }
+
+
+                
             }
         }
         else //makes the decisions for coily's movement based on Qberts position
@@ -67,8 +69,10 @@ public class CoilyBallBehaviour : MonoBehaviour
             TargetObj = GameObject.FindWithTag("Target");
             TargetPos = TargetObj.GetComponent<Transform>().position;
             coilyPos = other.gameObject.GetComponent<Transform>().position;
+
             
-                if (TargetPos.y > coilyPos.y)
+
+            if (TargetPos.y > coilyPos.y)
                 {
                     y = 6;
                 }
@@ -91,10 +95,40 @@ public class CoilyBallBehaviour : MonoBehaviour
 
                     }
                 }
-                if (other.gameObject.GetComponent<Bottom>().bottom == true) { y = 6; } 
-                //this errors the code if coily jumps of the pyramid, but can be easily fixed to respawn coily instead, which will be done in M3
 
-                if (y == 6)
+            if (other.gameObject.tag == "Ground")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                PlayState.score += 500;
+                isTracking = false;
+                PlayState.doesCoilyExist = false;
+                Destroy(gameObject);
+
+            }
+            else if (other.gameObject.name == "Elevator_Target_Right")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                PlayState.score += 500;
+                isTracking = false;
+                PlayState.doesCoilyExist = false;
+                Destroy(gameObject);
+
+            }
+
+            else if (other.gameObject.name == "Elevator_Target_Left")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                PlayState.score += 500;
+                isTracking = false;
+                PlayState.doesCoilyExist = false;
+                Destroy(gameObject);
+
+            }
+            else if (other.gameObject.GetComponent<Bottom>().bottom == true) { y = 6; }
+            //this errors the code if coily jumps of the pyramid, but can be easily fixed to respawn coily instead, which will be done in M3
+           
+
+            if (y == 6)
             {
                 if (TargetPos.z == coilyPos.z)
                 {

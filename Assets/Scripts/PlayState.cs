@@ -29,6 +29,7 @@ public class PlayState : MonoBehaviour
     {
         if (doesCoilyExist == false)
         {
+            doesCoilyExist = true;
             StartCoroutine(createCoilyBall());
         }
 
@@ -57,6 +58,7 @@ public class PlayState : MonoBehaviour
         qbertLives = 3;
         death = false;
         doesCoilyExist = false;
+        CoilyBallBehaviour.isTracking = false;
         score = 0;
     }
 
@@ -90,9 +92,8 @@ public class PlayState : MonoBehaviour
 
     IEnumerator createCoilyBall()
     {
-        if (doesCoilyExist == false)
-        {
-            doesCoilyExist = true;
+       
+            
             yield return new WaitForSeconds(3);
 
             if (Random.Range(0, 2) == 0)
@@ -103,7 +104,6 @@ public class PlayState : MonoBehaviour
             {
                 Instantiate(coilyBall, new Vector3(1, 2, 0), coilyBall.rotation); //Spawn at T3
             }
-        }
 
     }
 
