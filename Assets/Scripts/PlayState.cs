@@ -8,7 +8,6 @@ public class PlayState : MonoBehaviour
 {
     public static int TilesToChange = 2;
     public static int qbertLives = 3;
-    public static int coilyLives = 3;
     public static bool death = false; //lost a life
 
     public static bool doesCoilyExist = false;
@@ -23,6 +22,7 @@ public class PlayState : MonoBehaviour
     {
         StartCoroutine(createRedBall());
         StartCoroutine(createGreenBall());
+        restartPlay();
     }
 
     void Update()
@@ -51,6 +51,15 @@ public class PlayState : MonoBehaviour
       
     }
 
+    void restartPlay()
+    {
+        TilesToChange = 28;
+        qbertLives = 3;
+        death = false;
+        doesCoilyExist = false;
+        score = 0;
+    }
+
     IEnumerator newLevel() 
     {
         score += 1000;
@@ -59,7 +68,6 @@ public class PlayState : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(3);
         Time.timeScale = 1f;
-        score = 0;
         SceneManager.LoadScene("MainMenu");
     }
 

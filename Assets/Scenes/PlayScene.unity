@@ -3557,7 +3557,6 @@ GameObject:
   - component: {fileID: 528715132}
   - component: {fileID: 528715131}
   - component: {fileID: 528715130}
-  - component: {fileID: 528715134}
   - component: {fileID: 528715135}
   m_Layer: 0
   m_Name: Qbert
@@ -3660,25 +3659,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
---- !u!95 &528715134
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528715128}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f5d128e39674e1e419d3280e135d7e7f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &528715135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3844,10 +3824,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577723080}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &577723085
@@ -3857,7 +3837,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577723080}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8307,7 +8287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c0b257501328f40a5c4e288323da12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftEdge: 0
+  leftEdge: 1
 --- !u!1 &1356421466
 GameObject:
   m_ObjectHideFlags: 0
@@ -9234,7 +9214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef10e4a4d1c7c44ba2c1fe3ab8983f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightEdge: 0
+  rightEdge: 1
 --- !u!114 &1460202947
 MonoBehaviour:
   m_ObjectHideFlags: 0

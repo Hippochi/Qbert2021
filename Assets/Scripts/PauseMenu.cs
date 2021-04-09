@@ -49,7 +49,6 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         PlayState.score = 0;
         PlayState.qbertLives = 3;
-        PlayState.coilyLives = 3;
         PlayState.TilesToChange = 28;
     }
 
