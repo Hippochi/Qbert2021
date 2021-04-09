@@ -8,42 +8,34 @@ public class CoilyBallBehaviour : MonoBehaviour
 {
     public GameObject TargetObj;
     public Vector3 coilyPos;
-    public static bool track = false;
-
-    public static bool coilyExists = false;
+    public static bool isTracking = false;
     public Vector3 TargetPos;
 
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
 
     void Update()
-    {
-
-        if (PlayState.coilyLives < 0)
-            {
-            GetComponent<Transform>().position = new Vector3(0, 1, 0);
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        }
+    { 
 
         if (PlayState.death == true)
         {
             Destroy(gameObject);
-            track = false;
+            isTracking = false;
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
        
-        coilyExists = true;
+ 
 
-        if (track == false)
+        if (isTracking == false)
         {
 
             if (other.gameObject.GetComponent<Bottom>().bottom == true)
             {
                 
-                track = true;
+                isTracking = true;
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 4, 0);
                 ChangeSprite();
                 
@@ -64,7 +56,7 @@ public class CoilyBallBehaviour : MonoBehaviour
                 {
                     GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                     PlayState.doesCoilyExist = false;
-                    track = false;
+                    isTracking = false;
                     Destroy(gameObject);
                 }
             }

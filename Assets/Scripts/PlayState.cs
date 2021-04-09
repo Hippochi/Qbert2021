@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayState : MonoBehaviour
 {
-    public static int TilesToChange = 28;
+    public static int TilesToChange = 2;
     public static int qbertLives = 3;
     public static int coilyLives = 3;
     public static bool death = false; //lost a life
@@ -35,7 +35,9 @@ public class PlayState : MonoBehaviour
         if (TilesToChange == 0)
         {
             Debug.Log("Win");
-            StartCoroutine(newLevel()); 
+            doesCoilyExist = false;
+            StartCoroutine(newLevel());
+            
             //check for all tiles changed - reset the level
         }
 
@@ -54,9 +56,11 @@ public class PlayState : MonoBehaviour
         score += 1000;
         TilesToChange = 28;
         //add points and reset tilesToChange
-        yield return new WaitForSeconds(4); 
-        
-        SceneManager.LoadScene("PlayScene");
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(3);
+        Time.timeScale = 1f;
+        score = 0;
+        SceneManager.LoadScene("MainMenu");
     }
 
 

@@ -18,7 +18,7 @@ public class TileBehaviour : MonoBehaviour
                 PlayState.TilesToChange -= 1;
 
                 PlayState.score += 25; // 25 points per tile
-                Debug.Log(PlayState.score);
+                
             }
             firstTile -= 1;
         }

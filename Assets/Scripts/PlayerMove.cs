@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public bool grounded = true; //limits movement to only while touching ground
+    public bool isGrounded = true; //limits movement to only while touching ground
     public GameObject lastTile; //for use with coily target
 
     void Update()
     {
-            if ((Input.GetKeyDown("[1]")) && (grounded == true)) //down left
+            if ((Input.GetKeyDown("[1]")) && (isGrounded == true)) //down left
             {
-                grounded = false; 
+                isGrounded = false; 
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 4, -1);
             }
 
-            if ((Input.GetKeyDown("[9]")) && (grounded == true)) //up right
+            if ((Input.GetKeyDown("[9]")) && (isGrounded == true)) //up right
             {
-            grounded = false;
+            isGrounded = false;
             GetComponent<Rigidbody>().velocity = new Vector3(0, 6, 1);
             }
 
-            if ((Input.GetKeyDown("[3]")) && (grounded == true)) //down right
+            if ((Input.GetKeyDown("[3]")) && (isGrounded == true)) //down right
             {
-            grounded = false;
+            isGrounded = false;
             GetComponent<Rigidbody>().velocity = new Vector3(1, 4, 0);
             }
 
-            if ((Input.GetKeyDown("[7]")) && (grounded == true)) //up left
+            if ((Input.GetKeyDown("[7]")) && (isGrounded == true)) //up left
             {
-            grounded = false;
+            isGrounded = false;
             GetComponent<Rigidbody>().velocity = new Vector3(-1, 6, 0);
             }
     }
@@ -65,9 +65,9 @@ public class PlayerMove : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
 
-        grounded = true; //makes sure that qbert is considered grounded while on a tile, allowing movement
+        //makes sure that qbert is considered isGrounded while on a tile, allowing movement
 
-        if (other.gameObject.tag == "Red_Ball_Bounce") 
+        if (other.gameObject.tag == "Red_Ball_Bounce")
         {
             PlayState.death = true;
             PlayState.qbertLives -= 1;
@@ -89,12 +89,14 @@ public class PlayerMove : MonoBehaviour
 
         if (other.gameObject.tag == "tile")
         {
+            isGrounded = true;
             lastTile = GameObject.FindWithTag("Target");
             lastTile.tag = "tile";
-            other.gameObject.tag = "Target"; 
+            other.gameObject.tag = "Target";
             //qbert is tracked through the last tile he had contact with
             //this resets the last tile he was on when he comes in contact with a new one then marks the current tile
         }
+
     }
 
 

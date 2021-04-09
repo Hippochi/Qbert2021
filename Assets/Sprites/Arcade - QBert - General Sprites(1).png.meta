@@ -1963,7 +1963,7 @@ TextureImporter:
         width: 4
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1971,6 +1971,27 @@ TextureImporter:
       bones: []
       spriteID: 3484464cec054fd70800000000000000
       internalID: 9075967998046783555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites(1)_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 276
+        width: 48
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc66deadde376240800000000000000
+      internalID: 4784862250946424026
       vertices: []
       indices: 
       edges: []

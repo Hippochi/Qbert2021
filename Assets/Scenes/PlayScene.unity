@@ -3691,7 +3691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7ecea10efbc534ebceea9e0031a420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grounded: 1
+  isGrounded: 1
   lastTile: {fileID: 0}
 --- !u!1 &535301904
 GameObject:
@@ -11050,7 +11050,7 @@ GameObject:
   - component: {fileID: 1743523765}
   m_Layer: 0
   m_Name: Elevator_Right
-  m_TagString: tile
+  m_TagString: elevator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12592,7 +12592,7 @@ GameObject:
   - component: {fileID: 1945944086}
   m_Layer: 0
   m_Name: Elevator_Left
-  m_TagString: tile
+  m_TagString: elevator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
