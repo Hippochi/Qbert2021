@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GreenBallBehaviour : MonoBehaviour
 {
+
+    
     void Update()
     {
         if (PlayState.death == true)
@@ -28,6 +30,7 @@ public class GreenBallBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Qbert")
         {
             Destroy(gameObject);
+            PlayState.enemiesFrozen = true;
             PlayState.score += 100;
             //gets rid of ball if collision occurs & adds points, add freeze all later
         }

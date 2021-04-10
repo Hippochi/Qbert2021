@@ -14,6 +14,7 @@ public class CoilyBallBehaviour : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
 
+
     void Update()
     { 
 
@@ -21,6 +22,23 @@ public class CoilyBallBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
             isTracking = false;
+        }
+
+        if (PlayState.enemiesFrozen == true)
+        {
+            //yvalue = GetComponent<Rigidbody>().velocity.y;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            //anyTruers = true;
+        }
+
+        else
+        {
+
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            //if (anyTruers == true) GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, yvalue, GetComponent<Rigidbody>().velocity.z);
+            //anyTruers = false; BALLS OFFSET YO
+
         }
     }
 
@@ -103,6 +121,8 @@ public class CoilyBallBehaviour : MonoBehaviour
                 isTracking = false;
                 PlayState.doesCoilyExist = false;
                 Destroy(gameObject);
+                PlayState.enemiesFrozen = true;
+                PlayState.coilyDied = true;
 
             }
             else if (other.gameObject.name == "Elevator_Target_Right")
@@ -112,7 +132,8 @@ public class CoilyBallBehaviour : MonoBehaviour
                 isTracking = false;
                 PlayState.doesCoilyExist = false;
                 Destroy(gameObject);
-
+                PlayState.enemiesFrozen = true;
+                PlayState.coilyDied = true;
             }
 
             else if (other.gameObject.name == "Elevator_Target_Left")
@@ -122,8 +143,20 @@ public class CoilyBallBehaviour : MonoBehaviour
                 isTracking = false;
                 PlayState.doesCoilyExist = false;
                 Destroy(gameObject);
-
+                PlayState.enemiesFrozen = true;
+                PlayState.coilyDied = true;
             }
+            else if (other.gameObject.tag == "elevator")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                PlayState.score += 500;
+                isTracking = false;
+                PlayState.doesCoilyExist = false;
+                Destroy(gameObject);
+                PlayState.enemiesFrozen = true;
+                PlayState.coilyDied = true;
+            }
+            
             else if (other.gameObject.GetComponent<Bottom>().bottom == true) { y = 6; }
             //this errors the code if coily jumps of the pyramid, but can be easily fixed to respawn coily instead, which will be done in M3
            

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 971481426508849838}
   - component: {fileID: 7814575882757612819}
   - component: {fileID: -2024404733150580751}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Coily_Ball_1
   m_TagString: Coily_Ball
   m_Icon: {fileID: 0}

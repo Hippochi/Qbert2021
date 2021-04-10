@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 527479665760183486}
   - component: {fileID: 4980056162417043779}
   - component: {fileID: 6977146606958235486}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Red_Ball_1
   m_TagString: Red_Ball_Bounce
   m_Icon: {fileID: 0}

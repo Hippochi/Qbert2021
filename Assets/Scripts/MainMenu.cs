@@ -5,26 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Update()
-    {
-        Start();
-        QuitGame();
-    }
+    
 
-    public void Start()
+    public void StartGame()
     {
-       SceneManager.LoadScene("PlayScene");
-    }
-
-    public void Leaderboard()
-    {
-        SceneManager.LoadScene("LeaderBoard");
+        SceneManager.LoadScene("PlayScene");
     }
 
     public void QuitGame()
     {
         Application.Quit();
-
     }
+
+    public void goToBoard()
+    {
+        SceneManager.LoadScene("LeaderBoard");
+    }
+
+    public void goToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
 }

@@ -5,123 +5,87 @@ using UnityEngine.UI;
 
 public class LeaderboardBehaviour : MonoBehaviour
 {
-    private Transform entryContainer;
-    private Transform entryTemplate;
-    private List<HighscoreEntry> highscoreEntryList;
-    private List<Transform> highscoreEntryTransformList;
-
+    public int currentScore;
 
     private void Awake()
     {
-
-        entryContainer = transform.Find("scoreParent");
-        entryTemplate = entryContainer.Find("ScoreTemp");
-
-        entryTemplate.gameObject.SetActive(false);
-
-
-        string jsonString = PlayerPrefs.GetString("Table");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString); //return highscores object
-
-        //Sort entry list by score
-        for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
+        int sessionCount = FindObjectsOfType<LeaderboardBehaviour>().Length;
+        if (sessionCount > 1)
         {
-            for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++)
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    public string getScore(int rank)
+    {
+        int rankScore;
+        rankScore = PlayerPrefs.GetInt(rank + "HScore");
+        return rankScore.ToString();
+    }
+
+    public string getName(int rank)
+    {
+        string rankName;
+        rankName = PlayerPrefs.GetString(rank + "HScoreName");
+        return rankName;
+    }
+
+    public void AddScore(string name)
+    {
+        int newScore;
+        string newName;
+        int oldScore;
+        string oldName;
+        newScore = currentScore;
+        newName = name;
+        for (int i = 0; i < 10; i++)
+        {
+            if (PlayerPrefs.HasKey(i + "HScore"))
             {
-                if (highscores.highscoreEntryList[j].score > highscores.highscoreEntryList[i].score)
+                if (PlayerPrefs.GetInt(i + "HScore") < newScore)
                 {
-                    //Swap
-                    HighscoreEntry tmp = highscores.highscoreEntryList[i];
-                    highscores.highscoreEntryList[i] = highscores.highscoreEntryList[j];
-                    highscores.highscoreEntryList[j] = tmp;
+                    // new score is higher than the stored score
+                    oldScore = PlayerPrefs.GetInt(i + "HScore");
+                    oldName = PlayerPrefs.GetString(i + "HScoreName");
+                    PlayerPrefs.SetInt(i + "HScore", newScore);
+                    PlayerPrefs.SetString(i + "HScoreName", newName);
+                    newScore = oldScore;
+                    newName = oldName;
                 }
             }
-        }
-
-
-        highscoreEntryTransformList = new List<Transform>();
-        foreach (HighscoreEntry highscoreEntry in highscoreEntryList)
-        {
-            CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
+            else
+            {
+                PlayerPrefs.SetInt(i + "HScore", newScore);
+                PlayerPrefs.SetString(i + "HScoreName", newName);
+                newScore = 0;
+                newName = "";
+            }
         }
     }
 
-
-    private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
+    public bool isHighScore()
     {
-        float templateHeight = 30f;
-        Transform entryTransform = Instantiate(entryTemplate, container);
-        RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-        entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count); //Evenly space out entries
-        entryTransform.gameObject.SetActive(true);
-
-        int rank = transformList.Count + 1;
-        string rankString;
-        switch (rank)
-        {
-            default:
-                rankString = rank + "TH"; break;
-
-            case 1:
-                rankString = "1ST";
-                break;
-            case 2:
-                rankString = "2ND";
-                break;
-            case 3:
-                rankString = "3RD";
-                break;
-        }
-        entryTransform.Find("PositionText").GetComponent<Text>().text = rankString;
-
-        // if current score is higher than any other score on the list
-        entryTransform.Find("ScoreText").GetComponent<Text>().text = PlayState.score.ToString();
-
-        string name = highscoreEntry.name;
-        entryTransform.Find("NameText").GetComponent<Text>().text = name;
-
-
-        //Set the leading entry to green
-        if (rank == 1)
-        {
-            entryTransform.Find("PositionText").GetComponent<Text>().color = Color.green;
-            entryTransform.Find("ScoreText").GetComponent<Text>().color = Color.green;
-            entryTransform.Find("NameText").GetComponent<Text>().color = Color.green;
-        }
-
-        transformList.Add(entryTransform);
+        return PlayerPrefs.GetInt("9HScore") < currentScore;
     }
 
-    private void AddHighScoreEntry(string name)
+
+    private void clearBoard()
     {
-        //Create HighscoreEntry
-        HighscoreEntry highscoreEntry = new HighscoreEntry { score = PlayState.score, name = name }; //take score from game and add to Leaderboard
+        for (int i = 0; i < 10; i++)
+        {
+            PlayerPrefs.SetInt(i + "HScore", 0);
+            PlayerPrefs.SetString(i + "HScoreName", "");
+        }
+    }
 
-        //Load saved Highscores
-        string jsonString = PlayerPrefs.GetString("Table");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString); //return highscores object
-
-        //Add new entry to Highscores
-        highscores.highscoreEntryList.Add(highscoreEntry);
-
-        //Save updated Highscores
-        string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString("Table", json);
+    private void OnApplicationQuit()
+    {
         PlayerPrefs.Save();
-    }
-
-
-    private class Highscores
-    {
-        public List<HighscoreEntry> highscoreEntryList;
-    }
-
-    // for a single high score entry
-    [System.Serializable]
-    private class HighscoreEntry
-    {
-        public int score;
-        public string name;
     }
 
 }
